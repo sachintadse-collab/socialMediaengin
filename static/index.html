@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reel Creator Agent — AI Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0c10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="icon" type="image/png" href="/static/icons/icon-192.png">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">🎬</div>
+        <div>
+          <h1 class="brand-title">Reel Creator Agent</h1>
+          <div style="font-size: 10px; color: var(--text-muted); font-weight: 500;">9:16 Short-Form Studio</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button id="btn-restart" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-color); color: var(--text-main); font-size: 11px; padding: 4px 10px; border-radius: 12px; cursor: pointer;" title="Start a fresh reel creation session">🔄 New Reel</button>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="session-badge">Connecting...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Chat Messages Viewport -->
+    <main class="chat-viewport" id="chat-viewport">
+      <!-- Chat bubbles and interactive cards are dynamically injected here -->
+    </main>
+
+    <!-- Chat Input Bar -->
+    <footer class="chat-input-bar">
+      <input type="file" id="global-file-input" multiple accept="image/*,video/*,audio/*" style="display: none;" />
+      <button id="btn-attach" class="btn-attach" title="Attach pictures, videos, or audio" aria-label="Upload Media" type="button">
+        📎
+      </button>
+      <input 
+        type="text" 
+        id="chat-input" 
+        class="chat-input" 
+        placeholder="Type a message or edit instructions (e.g. 'Change hook to XYZ')..." 
+        autocomplete="off"
+      />
+      <button id="btn-send" class="btn-send" aria-label="Send Message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </footer>
+
+    <!-- Synchronized Voiceover Studio Modal (Requirement 11) -->
+    <div class="voiceover-modal" id="vo-modal">
+      <div style="font-size: 18px; font-weight: 700; margin-bottom: 12px; color: #fff;">
+        🎙️ Live Voiceover Studio
+      </div>
+      <div class="reel-player-container">
+        <video id="vo-video" class="reel-video" playsinline></video>
+      </div>
+      <div class="recording-status" id="vo-status-text">
+        Ready to record
+      </div>
+      <button id="btn-vo-action" class="btn-rec">
+        🎙️ Start Synchronized Recording
+      </button>
+      <button 
+        onclick="document.getElementById('vo-modal').classList.remove('active')" 
+        style="background: transparent; border: none; color: var(--text-muted); font-size: 13px; margin-top: 14px; cursor: pointer;">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
